@@ -1,35 +1,32 @@
+def comparacao(operacao, lista):
+  contador = 1
+  while operacao != 1:
+    if (operacao % 2) == 0:
+        operacao = operacao / 2
+        contador += 1
+    else:
+        operacao = 3 * operacao + 1
+        contador += 1
+  lista.append(contador)
+
 def operacao(inicial, final):
-    contador = 1
-    operacao = inicial
     maior = []
 
     while True:
-        if inicial == final:
-            while operacao != 1:
-                if (operacao % 2) == 0:
-                    operacao = operacao / 2
-                    contador += 1
-                else:
-                    operacao = 3 * operacao + 1
-                    contador += 1
-            maior.append(contador)
-            return max(maior)
-            break
+      if inicial == final:
+        comparacao(inicial, maior)
+        return max(maior)
+        break
 
+      else:
+        if final < inicial:
+          while inicial != final:
+            comparacao(final, maior)
+            final += 1
         else:
-            while inicial != final:
-                while operacao != 1:
-                    if (operacao % 2) == 0:
-                        operacao = operacao / 2
-                        contador += 1
-                    else:
-                        operacao = 3 * operacao + 1
-                        contador += 1
-                maior.append(contador)
-                contador = 1
-                inicial += 1
-                operacao = inicial
-
+          while inicial != final:
+              comparacao(inicial, maior)
+              inicial += 1
 
 entrada = input().split()
 inicio = int(entrada[0])
