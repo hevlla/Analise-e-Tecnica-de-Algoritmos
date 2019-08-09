@@ -1,0 +1,12 @@
+def receber_dinheiro_alunos(qtd_alunos):
+    lista_dinheiro = []
+    for i in range(qtd_alunos):
+        dinheiro = float(input())
+        lista_dinheiro.append(dinheiro)
+    return lista_dinheiro
+
+while True:
+    quantidade_alunos = int(input())
+    if quantidade_alunos == 0:
+        break
+    print(receber_dinheiro_alunos(quantidade_alunos))
