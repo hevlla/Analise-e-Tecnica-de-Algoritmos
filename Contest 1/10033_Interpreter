@@ -1,0 +1,11 @@
+import sys
+
+def analise_instrucoes(qtd_casos):
+    if qtd_casos == "\n":
+        qtd_casos -= 1
+
+    while qtd_casos >= 1:
+        instrucoes = int(sys.stdin.readline()).split("")
+
+
+numero_casos = int(sys.stdin.readline())
