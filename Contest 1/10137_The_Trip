@@ -1,12 +1,29 @@
 def receber_dinheiro_alunos(qtd_alunos):
     lista_dinheiro = []
     for i in range(qtd_alunos):
-        dinheiro = float(input())
-        lista_dinheiro.append(dinheiro)
+        nota, centavos = input().split(".")
+        lista_dinheiro.append(int(nota)*100 + int(centavos))
     return lista_dinheiro
+
+def divisao_dinheiro(lista_dinheiro, qtd_alunos):
+    soma = sum(lista_dinheiro)
+    media_nota= soma // qtd_alunos
+    media_centavo = soma % qtd_alunos
+    devendo = 0
+
+    for i in lista_dinheiro:
+        if i > media_nota:
+            devendo += i - media_nota
+            if media_centavo > 0:
+                devendo -= 1
+                media_centavo -= 1
+
+    return devendo
 
 while True:
     quantidade_alunos = int(input())
     if quantidade_alunos == 0:
         break
-    print(receber_dinheiro_alunos(quantidade_alunos))
+    lista = receber_dinheiro_alunos(quantidade_alunos)
+    receber = divisao_dinheiro(lista,quantidade_alunos)
+    print("$"+ str(receber//100) + "." + str("%.2d" %(receber%100)))
