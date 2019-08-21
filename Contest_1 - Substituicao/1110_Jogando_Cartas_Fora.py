@@ -1,10 +1,6 @@
 baralho = list()
-""""
-Falta criar exceção para qtd_cartas == 1 e terminar a distribuição das cartas
-"""
 
 def cria_cartas(qtd_cartas):
-    globals(baralho)
     for carta in range(qtd_cartas):
         carta += 1
         baralho.append(carta)
@@ -12,11 +8,20 @@ def cria_cartas(qtd_cartas):
 
 def distribuindo_cartas():
     cartas_descartadas = list()
-    #while len(baralho) != 1:
-        
+    if len(baralho) == 1:
+        return cartas_descartadas
+    while len(baralho) != 1:
+        cartas_descartadas.append(baralho[0])
+        baralho.pop(0)
+        baralho.append(baralho[0])
+        baralho.pop(0)
+    return cartas_descartadas
+
+
 
 while True:
     qtd_cartas = int(input())
     if qtd_cartas == 0 or qtd_cartas > 50:
         break
-    print(cria_cartas(qtd_cartas))
+    cria_cartas(qtd_cartas)
+    print("Discarded cards: ", distribuindo_cartas(), "\nRemaining card: ", baralho)
