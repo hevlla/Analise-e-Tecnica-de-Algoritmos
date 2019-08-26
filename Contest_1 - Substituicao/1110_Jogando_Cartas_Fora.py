@@ -10,10 +10,8 @@ def cria_cartas(qtd_cartas):
 def distribuindo_cartas():
     cartas_descartadas.clear()
     while len(baralho) != 1:
-        cartas_descartadas.append(str(baralho[0]))
-        baralho.pop(0)
-        baralho.append(str(baralho[0]))
-        baralho.pop(0)
+        cartas_descartadas.append(str(baralho.pop(0)))
+        baralho.append(str(baralho.pop(0)))
 
 def main():
     while True:
@@ -27,3 +25,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
