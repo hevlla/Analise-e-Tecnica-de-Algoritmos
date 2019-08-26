@@ -1,0 +1,23 @@
+def analisa_expressao(expressao):
+    correto = False
+    cont_abre = 0
+    cont_fecha = 0
+    for i in expressao:
+        if i == "(":
+            cont_abre += 1
+        if i == ")":
+            cont_fecha += 1
+    if cont_abre == cont_fecha:
+        correto = True
+    return correto
+
+def main():
+    while True:
+        expressao = str(input())
+        if analisa_expressao(expressao) == True:
+            print("correct")
+        else:
+            print("incorrect")
+
+if __name__ == '__main__':
+    main()
