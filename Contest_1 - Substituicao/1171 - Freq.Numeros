@@ -1,0 +1,17 @@
+def frequencia(qtd_numeros): 
+  lista_qtd = {}
+  for num in range(qtd_numeros):
+    numero = int(input())
+    if numero in lista_qtd.keys():
+      lista_qtd[numero] =  lista_qtd[numero] + 1  
+    else:
+      lista_qtd[numero] = 1
+  return lista_qtd
+  
+def imprime_frequencia(numero):
+  for num in sorted(numero):
+    print (str(num) + " aparece " + str(numero[num]) + " vez(es)") 
+ 
+qtd_numeros = int(input())
+armazena = frequencia(qtd_numeros)
+imprime_frequencia(armazena)
