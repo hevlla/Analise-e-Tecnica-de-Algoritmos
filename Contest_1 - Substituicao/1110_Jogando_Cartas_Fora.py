@@ -1,28 +1,19 @@
-baralho = list()
-cartas_descartadas = list()
+while True:
+  qtd_cartas = int(input())  
+  manter_cartas = []
+  descartar_cartas = []
 
-def cria_cartas(qtd_cartas):
-    baralho.clear()
-    for carta in range(1, qtd_cartas+1):
-        baralho.append(carta)
-    return baralho
+  if qtd_cartas == 0:
+    break
 
-def distribuindo_cartas():
-    cartas_descartadas.clear()
-    while len(baralho) != 1:
-        cartas_descartadas.append(str(baralho.pop(0)))
-        baralho.append(str(baralho.pop(0)))
+  for i in range(qtd_cartas):
+    manter_cartas.append(i+1)
 
-def main():
-    while True:
-        qtd_cartas = int(input())
-        if qtd_cartas == 0 or qtd_cartas > 50:
-            break
-        cria_cartas(qtd_cartas)
-        distribuindo_cartas()
-        print("Discarded cards: " +", ".join(cartas_descartadas), end="")
-        print("\nRemaining card:", str(baralho[0]), end="\n")
+  while len(manter_cartas) > 1:
+    descartar_cartas.append(str(manter_cartas.pop(0)))
+    manter_cartas.insert(len(manter_cartas) - 1, manter_cartas.pop(0))
 
-if __name__ == "__main__":
-    main()
+  print("Discarded cards: " + ", ".join(descartar_cartas), end="")
+  print("\nRemaining card: " + str(manter_cartas[0]), end="\n")
+
 
