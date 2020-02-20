@@ -1,0 +1,20 @@
+def separa_virus(str_lista):
+  lista = list(map(int, str_lista.split(" ")))
+  lista.sort()
+  return lista
+
+def letaliedade(lista_virus, tam_virus):
+  i = 0
+  soma = 0
+  while tam_virus > i:
+    sub = lista_virus[tam_virus-1] - lista_virus[i]
+    soma += sub
+    tam_virus-=1
+    i+=1    
+  return soma
+
+while True:
+  qtd_virus = int(input())
+  lista_virus = str(input())
+  virus = separa_virus(lista_virus)
+  print(letaliedade(virus, qtd_virus))
