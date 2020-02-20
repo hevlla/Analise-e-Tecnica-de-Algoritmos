@@ -1,7 +1,35 @@
 def separa_virus(str_lista):
-  lista = list(map(int, str_lista.split(" ")))
-  lista.sort()
+  str_int = str_lista.split(" ")
+  lista = map(int, str_int)
+  lista = list(lista)
   return lista
+
+def particiona(nums, low, high):
+    pivo = nums[(low + high) // 2]
+    ant = low - 1
+    pos = high + 1
+    while True:
+        ant += 1
+        while nums[ant] < pivo:
+            ant += 1
+
+        pos -= 1
+        while nums[pos] > pivo:
+            pos -= 1
+
+        if ant >= pos:
+            return pos
+
+        nums[ant], nums[pos] = nums[pos], nums[ant]
+
+def quick_sort(virus, qtd):
+  def _quick_sort(items, low, high):
+    if low < high:
+        split_index = particiona(items, low, high)
+        _quick_sort(items, low, split_index)
+        _quick_sort(items, split_index + 1, high)
+
+  _quick_sort(virus, 0, qtd-1)
 
 def letaliedade(lista_virus, tam_virus):
   i = 0
@@ -17,4 +45,5 @@ while True:
   qtd_virus = int(input())
   lista_virus = str(input())
   virus = separa_virus(lista_virus)
+  quick_sort(virus, qtd_virus)
   print(letaliedade(virus, qtd_virus))
